@@ -1,0 +1,179 @@
+/* ===== GENERAL STYLING ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: #0d0d0d;
+  color: #e6e6e6;
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #1e90ff, #00b4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #dcdcdc;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #1e90ff;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #00142e, #003366);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding-top: 80px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-title span {
+  color: #1e90ff;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #cce6ff;
+}
+
+.btn {
+  padding: 12px 25px;
+  background: #1e90ff;
+  color: #000;
+  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #00b4ff;
+  color: #000;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+  padding: 80px 40px;
+  text-align: center;
+  background: #0f0f0f;
+}
+
+.about h2 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #1e90ff;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects {
+  padding: 80px 40px;
+  background: #000;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #1e90ff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  background: #0f0f0f;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(30,144,255,0.2);
+  transition: transform 0.3s ease;
+  color: #e6e6e6;
+  border: 1px solid #1e90ff33;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: #1e90ff;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  padding: 80px 40px;
+  text-align: center;
+  background: #0d0d0d;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #1e90ff;
+}
+
+.contact p {
+  color: #cce6ff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #000;
+  color: #1e90ff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== MEDIA QUERY ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
