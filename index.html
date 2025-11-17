@@ -23,81 +23,108 @@
 
     <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero">
-        <h1 class="hero-title">Hi, I'm <span>Siduduzo Ndlovu</span></h1>
-        <p class="hero-subtitle">Aspiring Web Developer • Creative Designer • Problem Solver</p>
-        <a href="#projects" class="btn">View My Work</a>
+        <div class="hero-inner">
+            <h1 class="hero-title">Hi, I'm <span>Siduduzo Ndlovu</span></h1>
+            <p class="hero-subtitle">Aspiring Web Developer • Creative Designer • Problem Solver</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
     </section>
 
     <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="about">
+    <section id="about" class="about container">
         <h2>About Me</h2>
         <p>
             I am a passionate web developer who loves building beautiful, modern, and creative
             digital experiences. I focus on clean UI design, responsiveness, and accessibility.
         </p>
     </section>
-    <section id="skills" class="skills-section">
-    <h2>Skills</h2>
 
-    <div class="skills-container">
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills" class="skills-section container">
+        <h2>Skills</h2>
 
-        <div class="skill-card">
-            <h3>Frontend Development</h3>
-            <ul>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>Responsive Design</li>
-                <li>JavaScript (Basics)</li>
-            </ul>
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>Frontend Development</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Responsive Design</li>
+                    <li>JavaScript (Basics)</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Tools & Platforms</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>VS Code</li>
+                    <li>Chrome DevTools</li>
+                    <li>GitHub Pages</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Other Skills</h3>
+                <ul>
+                    <li>Problem Solving</li>
+                    <li>UI Layout Design</li>
+                    <li>Debugging</li>
+                    <li>Version Control</li>
+                </ul>
+            </div>
+
         </div>
-
-        <div class="skill-card">
-            <h3>Tools & Platforms</h3>
-            <ul>
-                <li>Git & GitHub</li>
-                <li>VS Code</li>
-                <li>Chrome DevTools</li>
-                <li>GitHub Pages</li>
-            </ul>
-        </div>
-
-        <div class="skill-card">
-            <h3>Other Skills</h3>
-            <ul>
-                <li>Problem Solving</li>
-                <li>UI Layout Design</li>
-                <li>Debugging</li>
-                <li>Version Control</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-
+    </section>
 
     <!-- ===== PROJECTS SECTION ===== -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects container">
         <h2>Projects</h2>
 
-<div class="project-card">
-  <a href="https://sdundlovu.github.io/weather-app/" target="_blank">
-  <img src="images/weather-app.png" alt="Weather App Screenshot">
+        <!-- projects grid -->
+        <div class="projects-grid">
 
-    <h3>Weather App</h3>
-  </a>
-</div>
+            <div class="project-card">
+                <a href="https://sdundlovu.github.io/weather-app/" target="_blank" rel="noopener">
+                    <div class="project-thumb">
+                        <img src="images/weather-app.png" alt="Weather App Screenshot">
+                    </div>
+                    <div class="project-body">
+                        <h3>Weather App</h3>
+                        <p>5-day forecast app using OpenWeatherMap API. Blue / black theme, animations, responsive layout.</p>
+                        <span class="project-link">View Project →</span>
+                    </div>
+                </a>
+            </div>
 
+            <div class="project-card">
+                <a href="https://sdundlovu.github.io/movie-app/" target="_blank" rel="noopener">
+                    <div class="project-thumb">
+                        <img src="images/movie-app.png" alt="Movie App Screenshot">
+                    </div>
+                    <div class="project-body">
+                        <h3>Movie Explorer</h3>
+                        <p>TMDB-powered app with categories, search, autocomplete, and movie details modal.</p>
+                        <span class="project-link">View Project →</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
     </section>
 
     <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact container">
         <h2>Contact Me</h2>
         <p>Email: <strong>ndlovusiduduzo@icloud.com</strong></p>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <p>© 2025 Siduduzo — All Rights Reserved</p>
+        <div class="container footer-inner">
+            <p>© 2025 Siduduzo — All Rights Reserved</p>
+        </div>
     </footer>
 
 </body>
