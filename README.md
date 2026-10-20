@@ -1,9 +1,61 @@
-# Siduduzo Ndlovu portfolio
+# Siduduzo Ndlovu
 
-A responsive portfolio built from Siduduzo's supplied CV. A fast full-screen 0–100% welcome opens into a burst-and-shutter reveal of the interactive project screen, followed by a prominent Durban University of Technology education chapter, factual project details, biography, toolkit and contact.
+**Application Development graduate · Richards Bay, South Africa**  
+Open to junior developer / graduate opportunities
 
-Install dependencies with `pnpm install`, run `pnpm dev` for local development, and use `pnpm build` to create the deployable `dist/` folder. The HTML content remains static, while Vite bundles the small React Spring hero component.
+[View live portfolio](https://sdundlovu.github.io/portfolio/) · [LinkedIn](https://www.linkedin.com/in/siduduzo-ndlovu-6a972b383) · [Email](mailto:ndlovusiduduzo@icloud.com)
 
-Motion uses locally bundled GSAP and ScrollTrigger for the skippable full-screen percentage reveal, blue burst, split-screen transition, hero entrance and scroll progression; React Spring for switching and tilting the foreground interface concepts; Three.js for the spatial projection planes behind them; Anime.js for project-selector feedback; and Trig.js for scroll-position-driven biography and contact artwork. The WebGL scene pauses offscreen or when the tab is hidden, caps pixel density, and becomes a still frame for visitors who prefer reduced motion. The intro can be skipped by button or Escape and does not run for reduced-motion visitors. The stage remains readable if WebGL is unavailable. Do not open `index.html` directly as a file: use the local Vite URL printed by `pnpm dev`.
+---
 
-The stage's project previews are illustrative concepts, not screenshots of the linked applications. Replace them with real screenshots if available. Edit contact and project details in `index.html`; styles are in `styles.css`; project switching and mobile navigation are in `script.js`; preview rendering is in `src/spring-hero.jsx`.
+## About
+
+I build responsive web experiences and enjoy turning complex ideas into simple, useful interfaces. My background covers software development, front-end technologies, SQL, and API integration, and I’m keen to grow through hands-on work in real product teams.
+
+## Featured projects
+
+All three are live — open the links to try them.
+
+| Project | What it shows | Live demo |
+| --- | --- | --- |
+| **Weather App** | Responsive weather UI with live data from an external API | [Open](https://sdundlovu.github.io/weather-app/) |
+| **Movie Explorer** | Search and browse movies by category (trending, genres, top rated) | [Open](https://sdundlovu.github.io/movie-app/) |
+| **Personal Portfolio** | Self-designed site with education, skills, and working project demos | [Open](https://sdundlovu.github.io/portfolio/) |
+
+Built with HTML, CSS, JavaScript, and API integration.
+
+## Education
+
+**Diploma in Information and Communication Technology: Applications Development**  
+Durban University of Technology · 2026 · South Africa
+
+## Skills snapshot
+
+- **Development:** JavaScript, HTML, CSS, Java, C#, React (basics), responsive design  
+- **Data & integration:** SQL, API integration  
+- **Delivery:** Git & GitHub, Agile, project management  
+- **Also:** cybersecurity awareness, technical support, problem-solving, communication  
+
+**Languages:** English (C1) · IsiZulu (C2)  
+**Certification:** freeCodeCamp — Legacy JavaScript Algorithms and Data Structures V8
+
+## Contact
+
+- **Email:** [ndlovusiduduzo@icloud.com](mailto:ndlovusiduduzo@icloud.com)  
+- **Phone:** [+27 67 712 2586](tel:+27677122586)  
+- **LinkedIn:** [siduduzo-ndlovu](https://www.linkedin.com/in/siduduzo-ndlovu-6a972b383)  
+- **Portfolio:** [sdundlovu.github.io/portfolio](https://sdundlovu.github.io/portfolio/)
+
+---
+
+<details>
+<summary>For developers — run this repo locally</summary>
+
+```bash
+pnpm install   # or: npm install
+pnpm dev       # or: npm run dev
+pnpm build     # or: npm run build
+```
+
+Use the local Vite URL (do not open `index.html` as a file). Site content lives in `index.html`; styles in `styles.css`; interaction in `script.js`.
+
+</details>
