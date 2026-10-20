@@ -1,0 +1,22 @@
+{
+  "name": "siduduzo-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-spring/web": "^10.0.0",
+    "animejs": "^4.5.0",
+    "gsap": "^3.13.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.180.0",
+    "trig-js": "^4.2.1"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
