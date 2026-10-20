@@ -129,13 +129,13 @@ The field and work rows are precise and mostly rectilinear. Actions have small s
 The filled primary action is bright blue with dark text and changes to ice on hover. The text action relies on a restrained underline. The sticky header includes a direct Education route, muted links that brighten when active, and a bordered contact action on desktop. At mobile width, navigation becomes an accessible toggle panel. Keyboard focus uses a visible blue outline across links and buttons.
 
 ### Project screen and selector
-The screen is a dark, rounded field with compact stage metadata and a foreground interface concept. Its three selector buttons have subdued idle states, brighter hover/focus edges, and an active blue line. Aria-pressed and arrow-key selection communicate the chosen concept without relying on color or motion alone. Concepts are explicitly labeled as illustrative, not screenshots of live projects.
+The screen is a dark, rounded field with compact stage metadata and a tilted live screenshot of the selected project (Atmos weather, Movie Explorer, or this portfolio). Its three selector buttons have subdued idle states, brighter hover/focus edges, and an active blue line. Aria-pressed and arrow-key selection communicate the chosen project without relying on color or motion alone. Stage copy labels the media as a live project screenshot.
 
 ### Work rows and tags
 Work rows pair number, factual description, technology tags, and a direct outbound demo link. Hover changes the row's dark tone without shifting its horizontal padding; the outbound link has a circular outline that fills blue on hover. Tags are quiet, outlined metadata rather than interactive filters.
 
 ### Motion and fallback
-The full-screen welcome names Siduduzo and runs a fast 0–100% entry beat, then a blue circular burst and two sliding shutters reveal the portfolio. It can be skipped by button or Escape and is omitted for reduced-motion visitors and direct anchor loads. React Spring changes the foreground concept and responds to pointer tilt; Anime.js acknowledges selector change; Three.js supplies optional projection-frame depth; GSAP also handles hero entrance and scroll progression; Trig.js ties later decorative artwork to scroll. Static HTML provides a fallback concept. Reduced-motion preferences suppress spatial entrance, continuous WebGL movement, pointer tilt, and decorative displacement so no content depends on animation.
+Focal sequence: welcome count with blur-in, blue burst, and shutter split, then the project stage lights first and the caption lane follows. Project changes are reel changes—stage flash, title blur crossfade, and a snappier Spring swap with stronger pointer tilt. Scroll owns only chapter peaks (education monogram wipe, work list stagger, contact headline), not a fade on every block. Stage light sweep and availability pulse are continuous but pause under reduced motion. Intro skip (button/Escape), hash loads, and `prefers-reduced-motion` omit spatial choreography while keeping state feedback.
 
 ## Do's and Don'ts
 

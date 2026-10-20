@@ -47,6 +47,10 @@ const projectNames = ['Weather App', 'Movie Explorer', 'Personal Portfolio'];
 let selectedProject = 0;
 let activeAnime = [];
 
+const stage = document.querySelector('.project-stage');
+const stageTitle = document.querySelector('#stage-project-title');
+const stageCount = document.querySelector('#stage-count');
+
 function selectProject(index) {
   if (index === selectedProject && choices[index].classList.contains('is-active')) return;
   activeAnime.forEach(animation => animation.cancel());
@@ -58,12 +62,30 @@ function selectProject(index) {
     choice.setAttribute('aria-pressed', String(active));
     if (!reducedQuery.matches) {
       const line = choice.querySelector('.choice-line');
-      activeAnime.push(animate(line, { scaleX: active ? 1 : 0, duration: active ? 460 : 170, ease: 'outExpo' }));
-      if (active) activeAnime.push(animate(choice.querySelector('strong'), { x: [8, 0], duration: 400, ease: 'outExpo' }));
+      activeAnime.push(animate(line, { scaleX: active ? 1 : 0, duration: active ? 420 : 140, ease: 'outExpo' }));
+      if (active) {
+        activeAnime.push(animate(choice, { scale: [1.02, 1], duration: 280, ease: 'outExpo' }));
+        activeAnime.push(animate(choice.querySelector('strong'), { y: [6, 0], duration: 320, ease: 'outExpo' }));
+      }
     }
   });
-  document.querySelector('#stage-project-title').textContent = projectNames[index];
-  document.querySelector('#stage-count').textContent = `${index + 1} / 3`;
+  if (!reducedQuery.matches && stage) {
+    stage.classList.remove('is-reel-change');
+    void stage.offsetWidth;
+    stage.classList.add('is-reel-change');
+    window.setTimeout(() => stage.classList.remove('is-reel-change'), 520);
+  }
+  if (!reducedQuery.matches && stageTitle) {
+    activeAnime.push(animate(stageTitle, {
+      opacity: [0, 1],
+      y: [10, 0],
+      filter: ['blur(6px)', 'blur(0px)'],
+      duration: 380,
+      ease: 'outExpo'
+    }));
+  }
+  stageTitle.textContent = projectNames[index];
+  stageCount.textContent = `${index + 1} / 3`;
   window.dispatchEvent(new CustomEvent('portfolio:project-change', { detail: { index } }));
 }
 
@@ -79,7 +101,7 @@ choices.forEach((choice, index) => {
 });
 
 if (!reducedQuery.matches && !location.hash) {
-  animate('.project-choice', { opacity: [.65, 1], y: [16, 0], delay: stagger(75), duration: 540, ease: 'outExpo' });
+  animate('.project-choice', { opacity: [.4, 1], y: [22, 0], delay: stagger(90, { start: 120 }), duration: 620, ease: 'outExpo' });
 }
 reducedQuery.addEventListener('change', () => {
   if (!reducedQuery.matches) return;
@@ -87,7 +109,13 @@ reducedQuery.addEventListener('change', () => {
   choices.forEach(choice => {
     choice.querySelector('.choice-line').style.transform = '';
     choice.querySelector('strong').style.transform = '';
+    choice.style.transform = '';
   });
+  if (stageTitle) {
+    stageTitle.style.opacity = '';
+    stageTitle.style.filter = '';
+    stageTitle.style.transform = '';
+  }
 });
 
 gsap.registerPlugin(ScrollTrigger);
@@ -119,15 +147,23 @@ else {
   document.addEventListener('keydown', onIntroKey);
   const count = intro.querySelector('.intro-count');
   const progress = { value: 0 };
+  gsap.set(['.intro-shutter-left', '.intro-shutter-right'], { xPercent: 0 });
+  gsap.set('.intro-burst', { clipPath: 'circle(0% at 50% 50%)', opacity: 1 });
   introTimeline = gsap.timeline({ defaults: { ease: 'expo.out' }, onComplete: finishIntro })
-    .from('.welcome-intro-message', { clipPath: 'inset(0 0 15% 0)', y: 12, opacity: .75, duration: .18 })
-    .to(progress, { value: 100, duration: .64, ease: 'power2.inOut', onUpdate: () => { count.textContent = `${Math.round(progress.value)}%`; } }, '-=.1')
-    .to('.intro-meter span', { scaleX: 1, duration: .64, ease: 'power2.inOut' }, '<')
-    .to('.welcome-intro-panel', { scale: 1.07, opacity: 0, duration: .15, ease: 'power3.in' }, '+=.1')
-    .to('.intro-burst', { clipPath: 'circle(100% at 50% 50%)', duration: .27, ease: 'power3.inOut' }, '-=.04')
-    .to('.intro-shutter-left', { xPercent: -101, duration: .44, ease: 'power4.inOut' })
-    .to('.intro-shutter-right', { xPercent: 101, duration: .44, ease: 'power4.inOut' }, '<')
-    .to('.intro-burst', { opacity: 0, duration: .39, ease: 'power2.out' }, '<');
+    .from('.welcome-intro-message', { clipPath: 'inset(0 0 40% 0)', y: 28, filter: 'blur(8px)', duration: .42 })
+    .from('.welcome-count-wrap', { opacity: 0, y: 18, duration: .28 }, '-=.18')
+    .to(progress, {
+      value: 100,
+      duration: .85,
+      ease: 'power3.inOut',
+      onUpdate: () => { count.textContent = `${Math.round(progress.value)}%`; }
+    }, '-=.05')
+    .to('.intro-meter span', { scaleX: 1, duration: .85, ease: 'power3.inOut' }, '<')
+    .to('.welcome-intro-panel', { scale: 1.04, opacity: 0, filter: 'blur(6px)', duration: .22, ease: 'power3.in' }, '+=.08')
+    .to('.intro-burst', { clipPath: 'circle(120% at 50% 50%)', duration: .38, ease: 'power3.inOut' }, '-=.08')
+    .to('.intro-shutter-left', { xPercent: -105, duration: .58, ease: 'power4.inOut' }, '-=.12')
+    .to('.intro-shutter-right', { xPercent: 105, duration: .58, ease: 'power4.inOut' }, '<')
+    .to('.intro-burst', { opacity: 0, duration: .45, ease: 'power2.out' }, '<+=.08');
 }
 
 const motion = gsap.matchMedia();
@@ -136,30 +172,69 @@ motion.add({ reduced: '(prefers-reduced-motion: reduce)', desktop: '(min-width: 
   if (reduced) return;
 
   if (!location.hash) {
-    const revealHero = () => gsap.timeline({ defaults: { ease: 'expo.out' } })
-      .from('.hero h1', { clipPath: 'inset(0 0 18% 0)', y: 25, duration: .72 })
-      .from('.hero-role, .hero-description, .hero-actions', { opacity: .62, y: 14, stagger: .08, duration: .4 }, '-=.42')
-      .from('.project-stage', { opacity: .55, clipPath: 'inset(0 0 7% 0)', duration: .62 }, '-=.55');
+    const revealHero = () => {
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      gsap.set('.project-stage', { transformOrigin: '50% 55%' });
+      tl.from('.project-stage', {
+        opacity: 0,
+        scale: .94,
+        filter: 'blur(12px)',
+        boxShadow: '0 0 0 rgba(0,0,0,0)',
+        duration: .75
+      })
+        .from('.hero h1', { clipPath: 'inset(0 0 100% 0)', y: 36, duration: .7 }, '-=.45')
+        .from('.hero-role, .hero-description', { opacity: 0, y: 18, filter: 'blur(4px)', stagger: .07, duration: .45 }, '-=.38')
+        .from('.hero-actions', { opacity: 0, y: 14, duration: .35 }, '-=.22')
+        .from('.availability', { opacity: 0, duration: .3 }, '-=.18')
+        .from('.project-selector', { opacity: 0, y: 16, duration: .4 }, '-=.45');
+      return tl;
+    };
     if (introFinished) revealHero();
     else window.addEventListener('portfolio:intro-complete', revealHero, { once: true });
   }
 
   if (desktop) {
-    gsap.to('.hero-feature', {
-      yPercent: -7,
+    gsap.to('.project-stage', {
+      yPercent: -4,
       ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .8 }
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
 
-  gsap.from('.section-intro h2', {
-    clipPath: 'inset(0 0 100% 0)', duration: .7, ease: 'expo.out',
-    scrollTrigger: { trigger: '.work', start: 'top 75%', once: true }
+  gsap.from('.education-monogram', {
+    clipPath: 'inset(0 100% 0 0)',
+    opacity: .35,
+    duration: .9,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.education-feature-main', start: 'top 78%', once: true }
   });
-  document.querySelectorAll('.project-row').forEach(row => {
-    gsap.from(row.querySelector('.row-main'), {
-      opacity: 0, x: 28, duration: .55, ease: 'expo.out',
-      scrollTrigger: { trigger: row, start: 'top 82%', once: true }
-    });
+  gsap.from('.education-detail', {
+    opacity: 0,
+    y: 24,
+    duration: .55,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.education-feature-main', start: 'top 78%', once: true }
+  });
+
+  gsap.from('.section-intro h2', {
+    clipPath: 'inset(0 0 100% 0)',
+    duration: .75,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.work', start: 'top 78%', once: true }
+  });
+  gsap.from('.project-row', {
+    opacity: 0,
+    y: 28,
+    duration: .55,
+    stagger: { each: .09, from: 'start' },
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.project-list', start: 'top 80%', once: true }
+  });
+
+  gsap.from('.contact h2', {
+    clipPath: 'inset(0 0 90% 0)',
+    duration: .7,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.contact', start: 'top 75%', once: true }
   });
 });
