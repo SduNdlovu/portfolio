@@ -37,6 +37,7 @@ function PreviewShot({ project }) {
 function SpringPreview() {
   const [project, setProject] = useState(0);
   const [reduced, setReduced] = useState(lessMotion);
+  const [narrow, setNarrow] = useState(() => window.matchMedia('(max-width: 960px)').matches);
   const [tilt, tiltApi] = useSpring(() => ({ rx: 0, ry: 0, press: 1, config: { mass: 1.1, tension: 320, friction: 22 } }));
 
   useEffect(() => {
@@ -46,9 +47,16 @@ function SpringPreview() {
       setReduced(query.matches);
       if (query.matches) tiltApi.start({ rx: 0, ry: 0, press: 1, immediate: true });
     };
+    const narrowQuery = window.matchMedia('(max-width: 960px)');
+    const onNarrow = () => setNarrow(narrowQuery.matches);
     window.addEventListener('portfolio:project-change', onChange);
     query.addEventListener('change', onMotion);
-    return () => { window.removeEventListener('portfolio:project-change', onChange); query.removeEventListener('change', onMotion); };
+    narrowQuery.addEventListener('change', onNarrow);
+    return () => {
+      window.removeEventListener('portfolio:project-change', onChange);
+      query.removeEventListener('change', onMotion);
+      narrowQuery.removeEventListener('change', onNarrow);
+    };
   }, [tiltApi]);
 
   const transitions = useTransition(project, {
@@ -67,7 +75,7 @@ function SpringPreview() {
     tiltApi.start({ rx: -y * 5, ry: x * 7, press: 1 });
   };
   const reset = () => tiltApi.start({ rx: 0, ry: 0, press: 1 });
-  const baseRotation = [-3, 3, -2];
+  const baseRotation = narrow ? [0, 0, 0] : [-3, 3, -2];
 
   return transitions((spring, index) => <animated.div
     key={index}
