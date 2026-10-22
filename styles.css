@@ -314,3 +314,9 @@ footer{display:flex;justify-content:space-between;gap:25px;padding:30px clamp(24
   .project-stage.is-reel-change::before{animation:none!important}
   .button-primary:hover,.button-primary:hover svg,.contact-email:hover,.project-row:hover .row-shot img{transform:none}
 }
+.contact{padding:clamp(48px,6vw,72px) clamp(24px,6vw,110px)}
+.contact h2{font-size:clamp(40px,4.6vw,64px);margin-bottom:16px}
+.contact p{font-size:17px;margin-bottom:24px}
+.contact-email{gap:16px;font-size:clamp(18px,2vw,28px)}
+.contact-links{margin-top:22px}
+.contact-orbit{width:min(32vw,380px);border-width:32px;top:-24px}
