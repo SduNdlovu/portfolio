@@ -1,7 +1,7 @@
 # Siduduzo Ndlovu
 
-**Application Development graduate · Richards Bay, South Africa**  
-Open to junior developer / graduate opportunities
+**Application Development graduate · Durban, South Africa**  
+Open to junior developer and graduate intern roles, and willing to relocate
 
 [View live portfolio](https://sdundlovu.github.io/portfolio/) · [LinkedIn](https://www.linkedin.com/in/siduduzo-ndlovu-6a972b383) · [Email](mailto:ndlovusiduduzo@icloud.com)
 
